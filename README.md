@@ -1,4 +1,5 @@
-# dashing-table
+dashing-table
+=============
 
 Allows you to use tables with the dashing framework.
 
@@ -11,7 +12,9 @@ Allows you to use tables with the dashing framework.
 ## Installation
 
 Create a folder in your widgets folder called `table`. Insert the three files
-(table.coffee, table.scss, table.html)
+(table.coffee, table.scss, table.html).
+
+Alternately, you can use the automated dashing installer by running `dashing install 9c7cb3030f63ad10e517` from the root of your dashing project.
 
 ## Usage
 
@@ -25,7 +28,7 @@ Create a folder in your widgets folder called `table`. Insert the three files
 
 + Create a job to populate the widget.
 
-To send a row to the tbody (or thead), send a JSON hash to `rows` (`hrows` for
+To send a row to the tbody (or thead), send a array of hashes to `rows` (`hrows` for
 thead). The bindings work from row to column. Every column should be it's own
 array element off a `cols` hash. The hash must have a key of `"value"` in
 order to show up. To send multiple rows, use an array of these hashes.
@@ -35,7 +38,7 @@ Some other keys that you use include colspan, rowspan, class, and style.
 ### Basic Example
 
 ```ruby
-headers = [
+hrows = [
   { cols: [ {value: 'One'}, {value: 'Two'}, {value: 'Three'}, {value: 'Four'} ] }
 ]
 
@@ -46,13 +49,13 @@ rows = [
   { cols: [ {value: 'cell41'}, {value: rand(5)}, {value: rand(5)}, {value: rand(5)} ]}
 ]
 
-send_event('my-table', { hrows: headers, rows: rows } )
+send_event('my-table', { hrows: hrows, rows: rows } )
 ```
 
 ### Advanced Example (using colspan, class, style)
 
 ```ruby
-headers = [
+hrows = [
   {
     style: 'color:#888;',
     class: 'right',
@@ -72,5 +75,21 @@ rows = [
   { cols: [ {class: 'left', value: 'cell41'}, {value: 'value' + rand(5).to_s}, {colspan: 2, class: 'right', value: rand(5)} ]}
 ]
 
-send_event('my-table', { hrows: headers, rows: rows } )
+send_event('my-table', { hrows: hrows, rows: rows } )
 ```
+
+### Curl Example
+```sh
+  curl -d '  { "auth_token":"YOUR_AUTH_TOKEN",
+                "hrows": [ {"cols": [ {"value":"Name 0"}, {"value":"Value 0"} ] } ],
+                "rows":  [ {"cols": [ {"value":"Name 1"}, {"value":"Value 1"} ] },
+                           {"cols": [ {"value":"Name 2"}, {"value":"Value 2"} ] },
+                           {"cols": [ {"value":"Name 3"}, {"value":"Value 3"} ] },
+                           {"cols": [ {"value":"Name 4"}, {"value":"Value 4"} ] } ]
+              }' http://localhost:3030/widgets/table
+
+```
+
+### Contributors
+* [Nick Stocchero](http://github.com/nick123pig) (creator)
+* [Jorge Morgado](https://github.com/jorgemorgado)
