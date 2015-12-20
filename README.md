@@ -1,6 +1,12 @@
-# Table for Dashing
+# dashing-table
 
 Allows you to use tables with the dashing framework.
+
+## Preview
+
+![Basic Table Preview](https://raw.githubusercontent.com/wiki/jorgemorgado/dashing-table/table-basic.png)
+
+![Advanced Table Preview](https://raw.githubusercontent.com/wiki/jorgemorgado/dashing-table/table-advanced.png)
 
 ## Installation
 
