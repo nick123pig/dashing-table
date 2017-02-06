@@ -3,6 +3,8 @@ dashing-table
 
 Allows you to use tables with the dashing framework.
 
+[See our wiki](https://github.com/nick123pig/dashing-table/wiki)
+
 ## Preview
 
 ![Basic Table Preview](https://raw.githubusercontent.com/wiki/jorgemorgado/dashing-table/table-basic.png)
